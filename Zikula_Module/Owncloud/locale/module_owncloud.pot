@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Zikula 1.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-01 15:03+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/Owncloud/Form/Handler/Admin/Settings.php:45
+msgid "Configuring of module settings cancelled!"
+msgstr ""
+
+#: lib/Owncloud/Form/Handler/Admin/Settings.php:60
+msgid "Module settings edited!"
+msgstr ""
+
+#: lib/Owncloud/Version.php:15
+msgid "Owncloud"
+msgstr ""
+
+#: lib/Owncloud/Version.php:16
+msgid ""
+"Owncloud connection module for Zikula. For using this module you have to "
+"install the zikula_auth module at your owncloud instance."
+msgstr ""
+
+#. ! module name that appears in URL
+#: lib/Owncloud/Version.php:18
+msgid "owncloud"
+msgstr ""
+
+#: lib/Owncloud/Api/Admin.php:14 templates/Admin/Settings.tpl:1
+msgid "Settings"
+msgstr ""
+
+#: templates/Admin/Settings.tpl:8
+msgid "Server authentification details"
+msgstr ""
+
+#: templates/Admin/Settings.tpl:10
+msgid "IP-Address of owncloud instance"
+msgstr ""
+
+#: templates/Admin/Settings.tpl:15
+msgid "Auth token"
+msgstr ""
+
+#: templates/Admin/Settings.tpl:23
+msgid "Store settings"
+msgstr ""
+
+#: templates/Admin/Settings.tpl:24
+msgid "Cancel"
+msgstr ""
