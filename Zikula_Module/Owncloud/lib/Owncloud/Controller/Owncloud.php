@@ -199,11 +199,20 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		
 		$search = FormUtil::getPassedValue('search', null, 'GETPOST');
 		if($search != '') {
-			$where = 'name LIKE \'' . $search . '%\'';
+			$where = 'name LIKE \'%' . $search . '%\'';
 		} else {
 			$where = '';
 		}
-		$groups = UserUtil::getGroups(/*$where, 'name', FormUtil::getPassedValue('offset', -1), FormUtil::getPassedValue('limit', -1)*/);
+		$offset = (integer)FormUtil::getPassedValue('offset', -1);
+		if($offset == null) {
+			$offset = -1;
+		}
+		$limit = (integer)FormUtil::getPassedValue('limit', -1);
+		if($limit == null) {
+			$limit = -1;
+		}
+		
+		$groups = UserUtil::getGroups($where, 'name', $offset, $limit);
 		
 		$return = array();
 		foreach($groups as $item) {
