@@ -199,7 +199,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		
 		$search = FormUtil::getPassedValue('search', null, 'GETPOST');
 		if($search != '') {
-			$where = 'name LIKE \'%' . $search . '%\'';
+			$where = 'name LIKE \'' . $search . '%\'';
 		} else {
 			$where = '';
 		}
