@@ -1,6 +1,6 @@
 <h3>{gt text='Redirecting you to Owncloud... Please wait'}</h3>
 
-<iframe id="Owncloud_Redirection_Logout_Iframe" src={$url_logout} height="0" width="0"></iframe>
+<iframe id="Owncloud_Redirection_Logout_Iframe" src="{$url_logout}" height="0" width="0"></iframe>
 <div style="display: none">
 
 	<form method="post" name="login" id="Owncloud_Redirection_Login_Form" action="{$url}">
