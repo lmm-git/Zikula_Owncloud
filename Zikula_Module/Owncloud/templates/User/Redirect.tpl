@@ -8,7 +8,7 @@
 			<input type="text" name="user" id="user" value="{$uname}" autocomplete="off" />
 			<input type="password" name="password" id="password" value="{$authcode.authcode}" />
 
-			<input type="checkbox" name="remember_login" value="0" id="remember_login" checked />
+			<input type="checkbox" name="remember_login" value="0" id="remember_login"/>
 			<input type="hidden" name="timezone-offset" id="timezone-offset"/>
 			<input type="submit" id="submitbutton" value="Login"/>
 		</fieldset>
