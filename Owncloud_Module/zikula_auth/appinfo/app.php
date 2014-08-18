@@ -18,9 +18,15 @@
  * 
  */
 
+//Hack to generate valid session before performing login (I know it is ugly...)
+if($_POST['user'] != '' && $_GET['zikula_authcode'] != '') {
+	OC::$server->getUserSession()->logout();
+	$requesttoken = $_POST['requesttoken'];
+	\OC::$session->set('requesttoken', $requesttoken);
+}
+
 require_once 'zikula_auth/lib/user.php';
 require_once 'zikula_auth/lib/group.php';
-
 
 OC_APP::registerAdmin('zikula_auth','settings');
 
