@@ -15,7 +15,7 @@
 	</form>
 </div>
 <script type="text/javascript">
-	window.onload = function Oncloud_submit() {
+	window.onload = function Owncloud_submit() {
 		setTimeout('document.getElementById(\'Owncloud_Redirection_Login_Form\').submit();', 10);
 	}
 </script>

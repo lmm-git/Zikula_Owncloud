@@ -45,4 +45,17 @@ class Owncloud_Controller_User extends Zikula_AbstractController
 		
 		return $this->view->fetch('User/Redirect.tpl');
 	}
+	
+	/**
+	 * Print successful logout message & redirect to logout page of Zikula
+	 *
+	 * @version 1.0
+	 * @author Leonard Marschke
+	 * @return redirection to owncloud
+	 */
+	public function logout()
+	{
+		LogUtil::registerStatus($this->__('Logout from OwnCloud sucessful!'));
+		return System::redirect(ModUtil::url('users', 'user', 'logout'));
+	}
 }

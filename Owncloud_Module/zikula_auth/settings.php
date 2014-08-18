@@ -22,11 +22,12 @@ OC_Util::checkAdminUser();
 $params = array(
 	'zikula_server',
 	'zikula_server_token'
+	'zikula_server_www_address'
 );
 
 if ($_POST) {
 	foreach($params as $param) {
-		if($param == 'zikula_server' && substr($_POST[$param], -1) != '/') {
+		if(($param == 'zikula_server' || $param =='zikula_server_www_address') && substr($_POST[$param], -1) != '/') {
 			$_POST[$param] .= '/';
 		}
 		if(isset($_POST[$param])) {

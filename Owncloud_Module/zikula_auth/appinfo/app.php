@@ -27,6 +27,9 @@ if($_POST['user'] != '' && $_GET['zikula_authcode'] != '') {
 
 require_once 'zikula_auth/lib/user.php';
 require_once 'zikula_auth/lib/group.php';
+require_once 'zikula_auth/lib/hooks.php';
+
+OCP\Util::connectHook('OC_User', 'logout', 'OC_Zikula_Auth_Hooks', 'logout');
 
 OC_APP::registerAdmin('zikula_auth','settings');
 
