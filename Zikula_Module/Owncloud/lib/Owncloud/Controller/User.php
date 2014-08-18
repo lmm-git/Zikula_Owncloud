@@ -2,7 +2,7 @@
 class Owncloud_Controller_User extends Zikula_AbstractController
 {
 	/**
-	 * general settings
+	 * redirection to configured OwnCloud instance
 	 *
 	 * @version 1.1
 	 * @author Leonard Marschke
