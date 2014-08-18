@@ -28,7 +28,12 @@ class OC_Zikula_Auth_Hooks{
          * @return boolean
          */
         public static function logout($parameters) {
-             header('Location: ' . OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null) . 'index.php?module=owncloud&type=user&func=logout');
+             if($_GET['backtoZikulaWebsite'] === true) {
+                 header('Location: ' . OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null));
+             } else {
+                 header('Location: ' . OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null) . 'index.php?module=owncloud&type=user&func=logout');
+             }
+             
              session_unset();
              session_destroy();
              OC_User::unsetMagicInCookie();

@@ -35,3 +35,12 @@ OC_APP::registerAdmin('zikula_auth','settings');
 
 OC_User::useBackend('Zikula');
 OC_Group::useBackend(new OC_GROUP_ZIKULA());
+
+OCP\App::addNavigationEntry(
+	array( 'id' => 'zikula_auth_backtowebsite',
+		'order' => 70,
+		'href' => OCP\Util::linkTo( 'zikula_auth', 'backtowebsite.php' ),
+		'icon' => OCP\Util::imagePath( 'zikula_auth', 'website.svg' ),
+		'name' => 'Back to website'
+));
+
