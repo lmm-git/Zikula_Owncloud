@@ -9,6 +9,9 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 	 * @return true on valid server-credentials
 	 */
 	private function authenticate() {
+		//we do not need a session, so we don't need to have unnused db-entries in session db
+		session_destroy();
+		
 		$token = FormUtil::getPassedValue('token', null, 'GETPOST');
 		$addr = $_SERVER['REMOTE_ADDR'];
 		
