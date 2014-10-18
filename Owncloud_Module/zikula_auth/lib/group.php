@@ -111,7 +111,7 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	* Returns a list with all groups
 	*/
 	public function getGroups($search = '', $limit = -1, $offset = 0) {
-		$return = ZikulaConnect::fetch('getGroups'/*, array('search' => $search, 'offset' => $offset, 'limit' => $limit)*/); ///TODO
+		$return = ZikulaConnect::fetch('getGroups', array('search' => $search, 'offset' => $offset, 'limit' => $limit));
 		return $return;
 	}
 
