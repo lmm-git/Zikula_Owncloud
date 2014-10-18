@@ -23,12 +23,7 @@ require_once 'zikula_auth/lib/zikulaconnect.php';
 /**
 * @brief Class providing zikula users to ownCloud
 */
-class OC_USER_ZIKULA extends OC_User_Backend {
-
-	protected $possibleActions = array(
-		OC_USER_BACKEND_CHECK_PASSWORD => 'checkPassword',
-	);
-
+class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 	/**
 	* @brief Create a new user
 	* @param $uid The username of the user to create
@@ -89,12 +84,27 @@ class OC_USER_ZIKULA extends OC_User_Backend {
 	}
 
 	/**
+	 * Determines if the backend can enlist users
+	 *
+	 * @return bool
+	 */
+	public function hasUserListings() {
+		return true;
+	}
+
+	/**
 	* @brief Get a list of all users
 	* @returns array with all active usernames
 	*
 	* Get a list of all users.
 	*/
 	public function getUsers($search = '', $limit = -1, $offset = 0) {
+		if(!is_numeric($limit)) {
+			$limit = -1;
+		}
+		if(!is_numeric($offset)) {
+			$offset = -1;
+		}
 		return ZikulaConnect::fetch('getUsers', array('search' => $search, 'offset' => $offset, 'limit' => $limit));
 	}
 
@@ -105,5 +115,14 @@ class OC_USER_ZIKULA extends OC_User_Backend {
 	*/
 	public function userExists($uid) {
 		return ZikulaConnect::fetch('userExists', array('user' => $uid));
+	}
+	
+	
+	/**
+	* @brief get count of users
+	* @return integer
+	*/
+	public function countUsers() {
+		return count(self::getUsers());
 	}
 }

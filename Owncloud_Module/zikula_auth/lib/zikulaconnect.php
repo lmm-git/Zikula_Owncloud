@@ -38,7 +38,7 @@ class ZikulaConnect {
 		}
 		
 		//define chache file name
-		$pathname = 'apps/zikula_auth/cache/' . hash('sha256', $url . serialize($postparams));
+		$pathname = sys_get_temp_dir() . '/Zikula_Owncloud/' . hash('sha256', $url . serialize($postparams));
 		$filename = $pathname . '/' . time();
 		
 		//check for cached content
@@ -79,7 +79,7 @@ class ZikulaConnect {
 			//store output in cache only if it is not an auth request
 			if($func != 'checkUserPassword') {
 				if(!is_dir($pathname)) {
-					mkdir($pathname);
+					mkdir($pathname, 0770, true);
 				}
 				$cache = fopen($filename, 'w');
 				fwrite($cache, $output);

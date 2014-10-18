@@ -76,7 +76,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		if($search != '') {
 			$where = 'uname LIKE \'' . $search . '%\'';
 		} else {
-			$where = '';
+			$where = null;
 		}
 		$users = self::getRawUsers($where);
 		//build return array
