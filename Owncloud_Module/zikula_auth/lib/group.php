@@ -97,7 +97,11 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	* if the user exists at all.
 	*/
 	public function getUserGroups($uid) {
-		return ZikulaConnect::fetch('getUserGroups', array('user' => $uid));
+		$result = ZikulaConnect::fetch('getUserGroups', array('user' => $uid));
+		if(!is_array($result)) {
+			$result = array();
+		}
+		return $result;
 	}
 
 	/**
