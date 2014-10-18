@@ -5,7 +5,7 @@
 	<form method="post" name="login" id="Owncloud_Redirection_Login_Form" action="{$url}">
 		<fieldset>
 			<input type="text" name="user" id="user" value="{$uname}" autocomplete="off" />
-			<input type="password" name="password" id="password" value="{$authcode.authcode}" />
+			<input type="text" name="password" id="password" value="{$authcode.authcode}" autocomplete="off" />
 
 			<input type="checkbox" name="remember_login" value="0" id="remember_login"/>
 			<input type="hidden" name="requesttoken" value="{$requesttoken}" /> 

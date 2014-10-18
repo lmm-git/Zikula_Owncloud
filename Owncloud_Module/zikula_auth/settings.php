@@ -21,7 +21,7 @@ OC_Util::checkAdminUser();
 
 $params = array(
 	'zikula_server',
-	'zikula_server_token'
+	'zikula_server_token',
 	'zikula_server_www_address'
 );
 
@@ -38,7 +38,8 @@ if ($_POST) {
 
 // fill template
 $tmpl = new OC_Template( 'zikula_auth', 'settings');
-$tmpl->assign('zikula_server',       OC_Appconfig::getValue( 'zikula_auth', 'zikula_server',       'localhost'));
-$tmpl->assign('zikula_server_token', OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_token', ''));
+$tmpl->assign('zikula_server', OC_Appconfig::getValue('zikula_auth', 'zikula_server', 'localhost/'));
+$tmpl->assign('zikula_server_token', OC_Appconfig::getValue('zikula_auth', 'zikula_server_token', ''));
+$tmpl->assign('zikula_server_www_address', OC_Appconfig::getValue('zikula_auth', 'zikula_server_www_address', ''));
 
 return $tmpl->fetchPage();
