@@ -7,7 +7,9 @@ A connector to use Zikula users in your ownCloud instance
 Installing
 ----------
 
-_I have tested both modules with Zikula 1.3.7 and OwnCloud 7.0.2. It will not work with OwnCloud version lower than 7.0.0._
+_I have tested both modules with Zikula 1.3.7 and OwnCloud 7.0.3. It will not work with OwnCloud version lower than 7.0.0._
+
+This package needs php-curl!
 
 To install this connector you have to install the module from the directory ```Zikula_Module``` ```Owncloud``` into your Zikula instance and the app ```zikula_auth``` from the directory ```Owncloud_Module```.
 After that you have to configure both modules by accessing the admin-panel in your Zikula instance and Owncloud instance. There you have to input a auth code wich must be equal at both modules and the server address and/or ip from the other instance.
