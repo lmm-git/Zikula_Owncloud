@@ -72,9 +72,10 @@ class ZikulaConnect {
 			curl_close($ch);
 		
 			$return = json_decode($output);
-			if($return == null && $output != false && $output != true) {
+			if($return == null && $output == false) {
 				OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func,3);
-				return null;
+				die();
+				//return null;
 			}
 			//store output in cache only if it is not an auth request
 			if($func != 'checkUserPassword') {
