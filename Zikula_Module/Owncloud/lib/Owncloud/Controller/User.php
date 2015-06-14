@@ -2,6 +2,18 @@
 class Owncloud_Controller_User extends Zikula_AbstractController
 {
 	/**
+	 * postInitialize function
+	 * primarily disables caching
+	 *
+	 * @version 1.0
+	 * @author Leonard Marschke
+	 */
+	protected function postInitialize()
+	{
+		$this->view->setCaching(false);
+	}
+
+	/**
 	 * redirection to configured OwnCloud instance
 	 *
 	 * @version 1.1

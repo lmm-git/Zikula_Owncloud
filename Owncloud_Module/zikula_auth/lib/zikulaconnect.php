@@ -90,6 +90,7 @@ class ZikulaConnect {
 		} else {
 			$return = json_decode($output);
 		}
+
 		return $return;
 	}
 }

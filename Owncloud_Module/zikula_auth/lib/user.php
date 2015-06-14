@@ -76,6 +76,7 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 		if($_POST['user'] != '' && $_GET['zikula_authcode'] != '') {
 			$postparams['viaauthcode'] = true;
 		}
+
 		if(ZikulaConnect::fetch('checkUserPassword', $postparams)) {
 			return $uid;
 		} else {
