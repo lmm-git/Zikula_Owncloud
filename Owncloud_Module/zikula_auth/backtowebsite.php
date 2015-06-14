@@ -27,4 +27,3 @@ OCP\App::setActiveNavigationEntry('zikula_auth_backtowebsite');
 
 $_GET['backtoZikulaWebsite'] = true;
 OC_User::logout();
-

@@ -20,9 +20,9 @@
 
 //Hack to generate valid session before performing login (I know it is ugly...)
 if(isset($_POST['user']) && $_POST['user'] != '' && $_GET['zikula_authcode'] != '') {
-	OC::$server->getUserSession()->logout();
+	\OC::$server->getUserSession()->logout();
 	$requesttoken = $_POST['requesttoken'];
-	\OC::$session->set('requesttoken', $requesttoken);
+	\OC::$server->getSession()->set('requesttoken', $requesttoken);
 }
 
 require_once 'zikula_auth/lib/user.php';
@@ -39,7 +39,7 @@ OC_Group::useBackend(new OC_GROUP_ZIKULA());
 OCP\App::addNavigationEntry(
 	array( 'id' => 'zikula_auth_backtowebsite',
 		'order' => 70,
-		'href' => OCP\Util::linkTo( 'zikula_auth', 'backtowebsite.php' ),
+		'href' => OCP\Util::linkToRoute('ZikulaAuth_backToWebsite'),
 		'icon' => OCP\Util::imagePath( 'zikula_auth', 'website.svg' ),
 		'name' => 'Back to website'
 ));
