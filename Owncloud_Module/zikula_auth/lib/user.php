@@ -126,4 +126,12 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 	public function countUsers() {
 		return count(self::getUsers());
 	}
+
+	/**
+	 * Backend name to be shown in user management
+	 * @return string the name of the backend to be shown
+	 */
+	public function getBackendName(){
+		return 'Zikula';
+	}
 }
