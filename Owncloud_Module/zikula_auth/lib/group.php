@@ -63,6 +63,17 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	}
 
 	/**
+	 * check if a group exists
+	 * @param string $gid
+	 * @return bool
+	 *
+	 * Checks whether a group exists in Zikula
+	 */
+	public function groupExists($gid) {
+		return ZikulaConnect::fetch('groupExists', array('group' => $gid));
+	}
+
+	/**
 	* @brief Add a user to a group
 	* @param $uid Name of the user to add to group
 	* @param $gid Name of the group in which add the user

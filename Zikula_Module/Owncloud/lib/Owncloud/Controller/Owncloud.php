@@ -201,6 +201,12 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		self::authenticate();
 		
 		$search = FormUtil::getPassedValue('search', null, 'GETPOST');
+		if($search == 'admin') {
+			$return = array('admin');
+		} else {
+			$return = array();
+		}
+
 		if($search != '') {
 			$where = 'name LIKE \'' . $search . '%\'';
 		} else {
@@ -214,14 +220,55 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		if($limit == null) {
 			$limit = -1;
 		}
-		
+
 		$groups = UserUtil::getGroups($where, 'name', $offset, $limit);
-		
+
 		$return = array();
 		foreach($groups as $item) {
 			$return[] = $item['name'];
 		}
+
+		echo json_encode($return);
+		System::shutdown();
+		return;
+	}
+
+	/**
+	 * groupExists - check if a given group exists
+	 *
+	 * @version 1.0
+	 * @author Leonard Marschke
+	 * @return JSON-Array
+	 */
+	public function groupExists()
+	{
+		self::authenticate();
 		
+		$search = FormUtil::getPassedValue('group', null, 'GETPOST');
+		if($search == 'admin') {
+			$return = true;
+		} else {
+			if($search != '') {
+				$where = 'name = \'' . $search . '\'';
+			} else {
+				$where = '';
+			}
+			$offset = (integer)FormUtil::getPassedValue('offset', -1);
+			if($offset == null) {
+				$offset = -1;
+			}
+			$limit = (integer)FormUtil::getPassedValue('limit', -1);
+			if($limit == null) {
+				$limit = -1;
+			}
+
+			$groups = UserUtil::getGroups($where, 'name', $offset, $limit);
+
+			if(count($groups) >= 1) {
+				$return = true;
+			}
+		}
+
 		echo json_encode($return);
 		System::shutdown();
 		return;
@@ -300,13 +347,13 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 			}
 		} else {
 			$groups = UserUtil::getGroupsForUser($uid);
-		$return = false;
-		foreach($groups as $item) {
-			$itemgroup = UserUtil::getGroup($item);
-			if($itemgroup['name'] == $group) {
-				$return = true;
+			$return = false;
+			foreach($groups as $item) {
+				$itemgroup = UserUtil::getGroup($item);
+				if($itemgroup['name'] == $group) {
+					$return = true;
+				}
 			}
-		}
 		}
 		
 		echo json_encode($return);
