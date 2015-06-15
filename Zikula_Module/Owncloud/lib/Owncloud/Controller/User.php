@@ -43,14 +43,7 @@ class Owncloud_Controller_User extends Zikula_AbstractController
 		$authcode = array('usebefore' => new DateTime('+1 Minute'), 'authcode' => $genstring);
 		UserUtil::setVar('owncloud_authcode', serialize($authcode));
 		$url = $this->getVar('OwncloudURL') . 'index.php?zikula_authcode=' . urlencode($genstring);
-		$url_logout = $this->getVar('OwncloudURL') . 'index.php?logout=true';
 		
-		$owncloudLoginPage = fopen($this->getVar('OwncloudURL') . '/index.php', "rb");
-		$owncloudLoginPage = stream_get_contents($owncloudLoginPage);
-		preg_match('/(.*)data-requesttoken="(?P<requesttoken>\w+)"/', $owncloudLoginPage, $matches);
-		
-		$this->view->assign('requesttoken', $matches['requesttoken']);
-		$this->view->assign('url_logout', $url_logout);
 		$this->view->assign('url', $url);
 		$this->view->assign('uname', UserUtil::getVar('uname'));
 		$this->view->assign('authcode', $authcode);
