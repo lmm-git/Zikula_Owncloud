@@ -18,6 +18,8 @@
  *
  */
 
+use OC\ServerNotAvailableException;
+
 class ZikulaConnect {
 	private static function buildUrl($func) {
 		if(substr(OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null), -1) != '/') {
@@ -71,12 +73,12 @@ class ZikulaConnect {
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postparams);
 			$output = curl_exec($ch);
 			curl_close($ch);
-		
+
 			$return = json_decode($output);
-			if($return == null && $output == false) {
-				OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func,3);
-				die();
-				//return null;
+			if($return == null || $output == false) {
+				OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func, \OCP\Util::ERROR);
+				throw new ServerNotAvailableException('Connection to Zikula could not be established');
+				return;
 			}
 			//store output in cache only if it is not an auth request
 			if($func != 'checkUserPassword') {
