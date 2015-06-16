@@ -115,6 +115,10 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 	* @return boolean
 	*/
 	public function userExists($uid) {
+		//sometimes we get an empty uid?!?
+		if($uid == '') {
+			return false;
+		}
 		return ZikulaConnect::fetch('userExists', array('user' => $uid));
 	}
 	
