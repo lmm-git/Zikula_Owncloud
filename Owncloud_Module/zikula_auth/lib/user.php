@@ -24,6 +24,14 @@ require_once 'zikula_auth/lib/zikulaconnect.php';
 * @brief Class providing zikula users to ownCloud
 */
 class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
+
+	protected $possibleActions = array(
+		self::CHECK_PASSWORD => 'checkPassword',
+		self::GET_HOME => 'getHome',
+		self::GET_DISPLAYNAME => 'getDisplayName',
+		self::COUNT_USERS => 'countUsers',
+	);
+
 	/**
 	* @brief Create a new user
 	* @param $uid The username of the user to create
