@@ -245,6 +245,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		self::authenticate();
 		
 		$search = FormUtil::getPassedValue('group', null, 'GETPOST');
+		$return = false;
 		if($search == 'admin') {
 			$return = true;
 		} else {
@@ -393,6 +394,28 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		}
 		
 		echo json_encode($return);
+		System::shutdown();
+		return;
+	}
+
+	/**
+	 * getUsersToDelete - get deleted user which should be deleted at owncloud too
+	 *
+	 * @version 1.0
+	 * @author Leonard Marschke
+	 * @return JSON-Array
+	 */
+	public function getUsersToDelete()
+	{
+		self::authenticate();
+		
+		$db = $this->entityManager->getRepository('Owncloud_Entity_DeleteUser')->findBy(array());
+		$result = array();
+		foreach($db as $item) {
+			$result[] = $item->getUname();
+		}
+		
+		echo json_encode($result);
 		System::shutdown();
 		return;
 	}

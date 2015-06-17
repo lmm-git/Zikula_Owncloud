@@ -44,3 +44,4 @@ OCP\App::addNavigationEntry(
 		'name' => 'Back to website'
 ));
 
+OCP\Backgroundjob::registerJob('\OCA\Zikula_Auth\Jobs\CleanUp');

@@ -28,6 +28,8 @@ class Owncloud_Version extends Zikula_AbstractVersion
 		// Module depedencies
 		$meta['dependencies'] = array();
 
+		$meta['capabilities'] = array(HookUtil::PROVIDER_CAPABLE => array('enabled' => true));
+
 		return $meta;
 	}
 }

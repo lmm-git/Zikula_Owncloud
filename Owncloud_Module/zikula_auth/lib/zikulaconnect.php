@@ -75,7 +75,7 @@ class ZikulaConnect {
 			curl_close($ch);
 
 			$return = json_decode($output);
-			if($return == null || $output == false) {
+			if($return === null || $output === false) {
 				OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func, \OCP\Util::ERROR);
 				throw new ServerNotAvailableException('Connection to Zikula could not be established');
 				return;

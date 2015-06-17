@@ -10,6 +10,18 @@ class Owncloud_Installer extends Zikula_AbstractInstaller
 	public function install()
 	{
 		$this->setVars(Owncloud_Util::getModuleDefaults());
+
+		EventUtil::registerPersistentModuleHandler('Owncloud', 'module.users.ui.validate_delete', array('Owncloud_Listeners', 'deleteOwncloudUser'));
+
+		try {
+			DoctrineHelper::createSchema($this->entityManager, array(
+				'Owncloud_Entity_DeleteUser'
+			));
+		} catch (Exception $e) {
+			echo $e;
+			System::shutdown();
+			return false;
+		}
 		
 		// Initialisation successful
 		return true;
@@ -28,6 +40,19 @@ class Owncloud_Installer extends Zikula_AbstractInstaller
 		switch($oldversion) {
 			case '0.0.1':
 				//further upgrades
+			case '0.8.0':
+				EventUtil::registerPersistentModuleHandler('Owncloud', 'module.users.ui.validate_delete', array('Owncloud_Listeners', 'deleteOwncloudUser'));
+				try {
+					DoctrineHelper::createSchema($this->entityManager, array(
+						'Owncloud_Entity_DeleteUser'
+					));
+				} catch (Exception $e) {
+					echo $e;
+					System::shutdown();
+					return false;
+				}
+			case '0.9.0':
+
 		}
 		return true;
 	}
@@ -42,6 +67,13 @@ class Owncloud_Installer extends Zikula_AbstractInstaller
 	{
 		//Remove all ModVars
 		$this->delVars();
+
+		EventUtil::unregisterPersistentModuleHandlers('Owncloud');
+
+		DoctrineHelper::dropSchema($this->entityManager, array(
+			'Owncloud_Entity_DeleteUser'
+		));
+
 		return true;
 	}
 }
