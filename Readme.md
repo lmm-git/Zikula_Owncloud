@@ -7,7 +7,8 @@ A connector to use Zikula users in your ownCloud instance
 Installing
 ----------
 
-_I have tested both modules with Zikula 1.3.7 and OwnCloud 7.0.3. It will not work with OwnCloud version lower than 7.0.0._
+_I have tested both modules with Zikula 1.3.9 and OwnCloud 8.0.4._
+Please note the issue described [here](https://github.com/owncloud/calendar/pull/814). Because of this issue the module won't delete users calendars (rest of the modules work fine).
 
 This package needs php-curl!
 
@@ -18,7 +19,7 @@ Usage
 -----
 
 After installing the modules correctly you should be able to login with your Zikula-credentials if you have the necessary rights (```Owncloud::Use``` at ```ACCESS_EDIT``` at least). If you want a direct redirection without typing in your credentials again from your Zikula instance you can add a link calling the ```redirect``` function of the user type of the module. For example the following link in a template:
-```
+```smarty
 {modurl modname='Owncloud' type='user' func='redirect'}
 ```
 
