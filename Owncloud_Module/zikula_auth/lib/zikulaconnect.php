@@ -26,7 +26,7 @@ class ZikulaConnect {
 			OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! Please note that you need an ending /!',3);
 			return;
 		}
-		
+
 		$url = OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null) . 'index.php?module=Owncloud&type=Owncloud&func=' . $func;
 		return $url;
 	}
@@ -38,11 +38,11 @@ class ZikulaConnect {
 			OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! You have to enter a server token!',3);
 			return null;
 		}
-		
+
 		//define chache file name
 		$pathname = sys_get_temp_dir() . '/Zikula_Owncloud/' . hash('sha256', $url . serialize($postparams));
 		$filename = $pathname . '/' . time();
-		
+
 		//check for cached content
 		$output = null;
 		if(is_dir($pathname)) {
@@ -74,9 +74,16 @@ class ZikulaConnect {
 			$output = curl_exec($ch);
 			curl_close($ch);
 
-			$return = json_decode($output);
-			if($return === null || $output === false) {
-				OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func, \OCP\Util::ERROR);
+			$return = json_decode($output, true);
+			if($return === null || $output === false || !isset($return['status']) || $return['status'] != 'success') {
+				if(isset($return['status']) && $return['status'] == 'error' && is_string($return['data'])) {
+					OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
+						'. Error message: ' . $return['data'], \OCP\Util::ERROR);
+				} else {
+					OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
+						'. No error message provided by Zikula.', \OCP\Util::ERROR);
+				}
+
 				throw new ServerNotAvailableException('Connection to Zikula could not be established');
 				return;
 			}
@@ -90,10 +97,10 @@ class ZikulaConnect {
 				fclose($cache);
 			}
 		} else {
-			$return = json_decode($output);
+			$return = json_decode($output, true);
 		}
 
-		return $return;
+		return $return['data'];
 	}
 }
 
