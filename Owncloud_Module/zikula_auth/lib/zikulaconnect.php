@@ -18,24 +18,26 @@
  *
  */
 
+namespace OCA\Zikula_Auth;
+
 use OC\ServerNotAvailableException;
 
 class ZikulaConnect {
 	private static function buildUrl($func) {
-		if(substr(OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null), -1) != '/') {
-			OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! Please note that you need an ending /!',3);
+		if(substr(\OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null), -1) != '/') {
+			\OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! Please note that you need an ending /!',3);
 			return;
 		}
 
-		$url = OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null) . 'index.php?module=Owncloud&type=Owncloud&func=' . $func;
+		$url = \OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null) . 'index.php?module=Owncloud&type=Owncloud&func=' . $func;
 		return $url;
 	}
 
 	public static function fetch ($func, $postparams = array()) {
 		$url = self::buildUrl($func);
-		$postparams['token'] = OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_token', '');
+		$postparams['token'] = \OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_token', '');
 		if($postparams['token'] == '') {
-			OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! You have to enter a server token!',3);
+			\OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! You have to enter a server token!',3);
 			return null;
 		}
 
@@ -77,10 +79,10 @@ class ZikulaConnect {
 			$return = json_decode($output, true);
 			if($return === null || $output === false || !isset($return['status']) || $return['status'] != 'success') {
 				if(isset($return['status']) && $return['status'] == 'error' && is_string($return['data'])) {
-					OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
+					\OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
 						'. Error message: ' . $return['data'], \OCP\Util::ERROR);
 				} else {
-					OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
+					\OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
 						'. No error message provided by Zikula.', \OCP\Util::ERROR);
 				}
 

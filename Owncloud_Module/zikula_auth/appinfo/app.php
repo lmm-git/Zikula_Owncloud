@@ -17,7 +17,6 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-
 //Hack to generate valid session before performing login (I know it is ugly...)
 if(isset($_POST['user']) && $_POST['user'] != '' && $_GET['zikula_authcode'] != '' && isset($_POST['requesttoken'])) {
 	\OC::$server->getUserSession()->logout();
@@ -29,12 +28,12 @@ require_once 'zikula_auth/lib/user.php';
 require_once 'zikula_auth/lib/group.php';
 require_once 'zikula_auth/lib/hooks.php';
 
-OCP\Util::connectHook('OC_User', 'logout', 'OC_Zikula_Auth_Hooks', 'logout');
+OCP\Util::connectHook('OC_User', 'logout', 'OCA\Zikula_Auth\Hooks', 'logout');
 
 OC_APP::registerAdmin('zikula_auth','settings');
 
-OC_User::useBackend(new OC_USER_ZIKULA());
-OC_Group::useBackend(new OC_GROUP_ZIKULA());
+OC_User::useBackend(new OCA\Zikula_Auth\User());
+OC_Group::useBackend(new OCA\Zikula_Auth\Group());
 
 OCP\App::addNavigationEntry(
 	array( 'id' => 'zikula_auth_backtowebsite',

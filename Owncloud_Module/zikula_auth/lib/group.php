@@ -18,12 +18,14 @@
  *
  */
 
+namespace OCA\Zikula_Auth;
+
 require_once 'zikula_auth/lib/zikulaconnect.php';
 
 /**
 * @brief Class providing Zikula groups to ownCloud
 */
-class OC_GROUP_ZIKULA extends OC_Group_Backend {
+class Group extends \OC_Group_Backend {
 
 	/**
 	* @brief Try to create a new group
@@ -34,7 +36,7 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	* be returned.
 	*/
 	public static function createGroup($gid) {
-		OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to create groups',3);
+		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to create groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -46,7 +48,7 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	* Deletes a group and removes it from the group_user-table
 	*/
 	public function deleteGroup($gid) {
-		OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to delete groups',3);
+		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to delete groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -82,7 +84,7 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	* Adds a user to a group.
 	*/
 	public function addToGroup($uid, $gid) {
-		OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to add users to groups',3);
+		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to add users to groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -95,7 +97,7 @@ class OC_GROUP_ZIKULA extends OC_Group_Backend {
 	* removes the user from a group.
 	*/
 	public function removeFromGroup( $uid, $gid ) {
-		OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to remove users from groups',3);
+		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to remove users from groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 

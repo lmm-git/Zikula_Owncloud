@@ -18,12 +18,14 @@
  *
  */
 
+namespace OCA\Zikula_Auth;
+
 require_once 'zikula_auth/lib/zikulaconnect.php';
 
 /**
 * @brief Class providing zikula users to ownCloud
 */
-class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
+class User extends \OC_User_Backend implements \OCP\UserInterface {
 
 	protected $possibleActions = array(
 		self::CHECK_PASSWORD => 'checkPassword',
@@ -42,7 +44,7 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 	* itself, not in its subclasses.
 	*/
 	public function createUser($uid, $password) {
-		OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to create users',3);
+		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to create users',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -54,7 +56,7 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 	* Deletes a user
 	*/
 	public function deleteUser($uid) {
-		OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to delete users',3);
+		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to delete users',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -67,7 +69,7 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 	* Change the password of a user
 	*/
 	public function setPassword($uid, $password) {
-		OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to change passwords',3);
+		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to change passwords',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -129,8 +131,7 @@ class OC_USER_ZIKULA extends OC_User_Backend implements \OCP\UserInterface {
 		}
 		return ZikulaConnect::fetch('userExists', array('user' => $uid));
 	}
-	
-	
+
 	/**
 	* @brief get count of users
 	* @return integer

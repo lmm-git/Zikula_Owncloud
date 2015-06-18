@@ -18,10 +18,12 @@
  *
  */
 
+namespace OCA\Zikula_Auth;
+
 /**
  * This class contains all hooks.
  */
-class OC_Zikula_Auth_Hooks{
+class Hooks {
         /**
          * @brief Logging out user at Zikula
          * @param paramters parameters from logout-Hook
@@ -29,11 +31,11 @@ class OC_Zikula_Auth_Hooks{
          */
         public static function logout($parameters) {
             if($_GET['backtoZikulaWebsite'] === true) {
-                header('Location: ' . OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null));
+                header('Location: ' . \OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null));
             } else {
-                header('Location: ' . OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null) . 'index.php?module=owncloud&type=user&func=logout');
+                header('Location: ' . \OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_www_address', null) . 'index.php?module=owncloud&type=user&func=logout');
             }
-             
+
             session_unset();
             session_destroy();
             OC_User::unsetMagicInCookie();
