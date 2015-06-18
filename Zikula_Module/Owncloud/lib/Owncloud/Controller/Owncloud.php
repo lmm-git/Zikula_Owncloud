@@ -60,7 +60,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		if($where == null) {
 			$where = 'activated = 1';
 		} else {
-			$where = '( ' . $where . ' ) AND activated = 1';
+			$where = '( ' . mysql_escape_string($where) . ' ) AND activated = 1';
 		}
 		$users = UserUtil::getUsers($where, 'uname', FormUtil::getPassedValue('offset', -1), FormUtil::getPassedValue('limit', -1));
 		//check for right permissions
