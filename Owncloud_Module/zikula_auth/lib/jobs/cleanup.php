@@ -56,8 +56,12 @@ class CleanUp extends TimedJob {
 			\OC_Log::write('OC_User_Zikula', 'Deleted user ' . $key . ' = ' . $item, \OCP\Util::DEBUG);
 
 			//what is better?
-			\OC::$server->getUserManager()->get($user)->delete();
+			$successful = \OC::$server->getUserManager()->get($user)->delete();
 			//\OC_User::deleteUser($user);
+
+			if($successful) {
+				\ZikulaConnect::fetch('userDeleted', array('user' => $user));
+			}
 		}
 
 	}

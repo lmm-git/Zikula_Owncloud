@@ -419,4 +419,36 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		System::shutdown();
 		return;
 	}
+
+	/**
+	 * userDeleted - delete a user to delete (because the user was deleted)
+	 *
+	 * @version 1.0
+	 * @author Leonard Marschke
+	 * @return JSON-Array
+	 */
+	public function userDeleted()
+	{
+		self::authenticate();
+
+		$userId = FormUtil::getPassedValue('user', null, 'GETPOST');
+		if(!is_string($userId)) {
+			echo json_encode(false);
+			System::shutdown();
+			return;
+		}
+
+		$user = $this->entityManager->getRepository('Owncloud_Entity_DeleteUser')->findOneBy(array('uname' => $userId));
+		if(!($user instanceof Owncloud_Entity_DeleteUser)) {
+			echo json_encode(false);
+			System::shutdown();
+			return;
+		}
+		$this->entityManager->remove($user);
+		$this->entityManager->flush();
+
+		echo json_encode(true);
+		System::shutdown();
+		return;
+	}
 }
