@@ -83,7 +83,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	*/
 	public function checkPassword($uid, $password) {
 		$postparams = array('user' => $uid, 'up' => $password);
-		if($_POST['user'] != '' && $_GET['zikula_authcode'] != '') {
+		if($_POST['user'] != '' && isset($_GET['zikula_authcode']) && $_GET['zikula_authcode'] != '') {
 			$postparams['viaauthcode'] = true;
 		}
 
