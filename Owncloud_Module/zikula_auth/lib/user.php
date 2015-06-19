@@ -40,7 +40,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	* @brief Create a new user
 	* @param $uid The username of the user to create
 	* @param $password The password of the new user
-	* @returns true/false
+	* @return true/false
 	*
 	* Creates a new user. Basic checking of username is done in OC_User
 	* itself, not in its subclasses.
@@ -53,7 +53,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	/**
 	* @brief delete a user
 	* @param $uid The username of the user to delete
-	* @returns true/false
+	* @return true/false
 	*
 	* Deletes a user
 	*/
@@ -66,7 +66,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	* @brief Set password
 	* @param $uid The username
 	* @param $password The new password
-	* @returns true/false
+	* @return true/false
 	*
 	* Change the password of a user
 	*/
@@ -79,7 +79,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	* @brief Check if the password is correct
 	* @param $uid The username
 	* @param $password The password
-	* @returns true/false
+	* @return true/false
 	*
 	* Check if the password is correct without logging in the user
 	*/
@@ -107,7 +107,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 
 	/**
 	* @brief Get a list of all users
-	* @returns array with all active usernames
+	* @return array with all active usernames
 	*
 	* Get a list of all users.
 	*/
