@@ -13,8 +13,8 @@ class Owncloud_Api_Admin extends Zikula_AbstractApi
 			'url'  => ModUtil::url($this->name, 'admin', 'settings'),
 			'text' => $this->__('Settings'),
 			'class' => 'z-icon-es-config');
-		
+
 		return $links;
 	}
-	
+
 }

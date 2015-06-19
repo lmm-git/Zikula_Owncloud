@@ -1,7 +1,6 @@
 <?php
 class Owncloud_Util
 {
-
 	/**
 	 * Provides an array containing default values for module variables (settings).
 	 *
@@ -16,5 +15,4 @@ class Owncloud_Util
 		$vars['AllowedHost'] = '127.0.0.1';
 		return $vars;
 	}
-
 }

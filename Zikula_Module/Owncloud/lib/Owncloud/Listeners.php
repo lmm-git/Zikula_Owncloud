@@ -3,7 +3,7 @@ class Owncloud_Listeners
 {
     /**
      * Event listener for 'module.users.ui.process_delete' event.
-     * 
+     *
      * @param Zikula_Event $event
      *
      * @return void

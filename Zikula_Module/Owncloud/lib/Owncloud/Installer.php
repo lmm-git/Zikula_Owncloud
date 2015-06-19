@@ -22,7 +22,7 @@ class Owncloud_Installer extends Zikula_AbstractInstaller
 			System::shutdown();
 			return false;
 		}
-		
+
 		// Initialisation successful
 		return true;
 	}

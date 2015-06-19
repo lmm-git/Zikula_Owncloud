@@ -24,5 +24,4 @@ class Owncloud_Api_DeleteUser extends Zikula_AbstractApi
 		$this->entityManager->remove($delUser);
 		$this->entityManager->flush();
 	}
-	
 }

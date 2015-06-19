@@ -20,7 +20,6 @@ class Owncloud_Version extends Zikula_AbstractVersion
 		$meta['core_min']       = '1.3.5'; //tested only with Zikula 1.3.5
 		$meta['core_max']       = '1.3.99';
 
-
 		// Permissions schema
 		$meta['securityschema'] = array('Owncloud::Use' => '::',
 			'Owncloud::Admin' => '::');

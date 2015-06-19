@@ -15,8 +15,7 @@ class Owncloud_Controller_Admin extends Zikula_AbstractController
 		}
 		return $this->redirect(ModUtil::url($this->name, 'admin', 'settings'));
 	}
-	
-	
+
 	/**
 	 * general settings
 	 *

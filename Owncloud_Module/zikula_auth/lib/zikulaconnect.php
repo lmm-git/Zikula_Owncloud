@@ -25,7 +25,7 @@ use OC\ServerNotAvailableException;
 class ZikulaConnect {
 	private static function buildUrl($func) {
 		if(substr(\OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null), -1) != '/') {
-			\OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! Please note that you need an ending /!',3);
+			\OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! Please note: you need an ending /!',3);
 			return;
 		}
 
@@ -105,4 +105,3 @@ class ZikulaConnect {
 		return $return['data'];
 	}
 }
-

@@ -22,13 +22,12 @@
 		</div>
 
 	</fieldset>
-	
-	
+
 	<div class="z-buttons z-formbuttons">
 		{formbutton commandName='send' __text='Store settings' class='z-bt-ok z-btgreen'}
 		{formbutton commandName='cancel' __text='Cancel' class='z-bt-cancel z-btred'}
 	</div>
-	
+
 {/form}
 
 {include file='Admin/Includes/Footer.tpl'}

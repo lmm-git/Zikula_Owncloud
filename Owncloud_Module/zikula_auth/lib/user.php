@@ -26,7 +26,9 @@ require_once 'zikula_auth/lib/zikulaconnect.php';
 * @brief Class providing zikula users to ownCloud
 */
 class User extends \OC_User_Backend implements \OCP\UserInterface {
-
+	/**
+	* provides the possible actions of this user backend
+	*/
 	protected $possibleActions = array(
 		self::CHECK_PASSWORD => 'checkPassword',
 		self::GET_HOME => 'getHome',
