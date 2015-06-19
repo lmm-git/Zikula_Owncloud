@@ -17,7 +17,7 @@ class Owncloud_Version extends Zikula_AbstractVersion
 		//! module name that appears in URL
 		$meta['url']            = $this->__('owncloud');
 		$meta['version']        = '0.9.0';
-		$meta['core_min']       = '1.3.5'; //tested only with Zikula 1.3.5
+		$meta['core_min']       = '1.3.9'; //tested only with Zikula 1.3.9
 		$meta['core_max']       = '1.3.99';
 
 		// Permissions schema
