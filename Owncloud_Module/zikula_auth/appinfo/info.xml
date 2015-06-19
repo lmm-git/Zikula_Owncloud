@@ -7,7 +7,7 @@
 	<version>0.9.0</version>
 	<licence>AGPL</licence>
 	<author>Leonard Marschke leonardmarschke@gmail.com</author>
-	<require>6</require>
+	<require>8</require>
 	<namespace>ZikulaAuth</namespace>
 	<types>
 		<authentication/>
