@@ -26,6 +26,27 @@ require_once 'zikula_auth/lib/zikulaconnect.php';
 * @brief Class providing Zikula groups to ownCloud
 */
 class Group extends \OC_Group_Backend {
+	/**
+	 * provides the settings of the module
+	 */
+	private $settings;
+
+	/**
+	 * provides zikula connect
+	 */
+	private $zikulaConnect;
+
+	/**
+	 * @brief instantiate the new class
+	 * @param $settingsDriver settings class
+	 * @return void
+	 *
+	 * Initialise the new class.
+	 */
+	public function __construct($settingsDriver) {
+		$this->settings = $settingsDriver;
+		$this->zikulaConnect = new ZikulaConnect($settingsDriver);
+	}
 
 	/**
 	* @brief Try to create a new group
@@ -61,7 +82,7 @@ class Group extends \OC_Group_Backend {
 	* Checks whether the user is member of a group or not.
 	*/
 	public function inGroup($uid, $gid) {
-		return ZikulaConnect::fetch('userInGroup', array('user' => $uid, 'group' => $gid));
+		return $this->zikulaConnect->fetch('userInGroup', array('user' => $uid, 'group' => $gid));
 	}
 
 	/**
@@ -72,7 +93,7 @@ class Group extends \OC_Group_Backend {
 	 * Checks whether a group exists in Zikula
 	 */
 	public function groupExists($gid) {
-		return ZikulaConnect::fetch('groupExists', array('group' => $gid));
+		return $this->zikulaConnect->fetch('groupExists', array('group' => $gid));
 	}
 
 	/**
@@ -110,7 +131,7 @@ class Group extends \OC_Group_Backend {
 	* if the user exists at all.
 	*/
 	public function getUserGroups($uid) {
-		$result = ZikulaConnect::fetch('getUserGroups', array('user' => $uid));
+		$result = $this->zikulaConnect->fetch('getUserGroups', array('user' => $uid));
 		if(!is_array($result)) {
 			$result = array();
 		}
@@ -124,7 +145,7 @@ class Group extends \OC_Group_Backend {
 	* Returns a list with all groups
 	*/
 	public function getGroups($search = '', $limit = -1, $offset = 0) {
-		$return = ZikulaConnect::fetch('getGroups', array('search' => $search, 'offset' => $offset, 'limit' => $limit));
+		$return = $this->zikulaConnect->fetch('getGroups', array('search' => $search, 'offset' => $offset, 'limit' => $limit));
 		return $return;
 	}
 
@@ -133,6 +154,6 @@ class Group extends \OC_Group_Backend {
 	* @return array with user ids
 	*/
 	public function usersInGroup($gid, $search = '', $limit = -1, $offset = 0) {
-		return ZikulaConnect::fetch('getUsersInGroup', array('user' => $gid, 'search' => $search, 'limit' => $limit, 'offset' => $offset));
+		return $this->zikulaConnect->fetch('getUsersInGroup', array('user' => $gid, 'search' => $search, 'limit' => $limit, 'offset' => $offset));
 	}
 }

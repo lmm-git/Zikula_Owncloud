@@ -23,23 +23,30 @@ namespace OCA\Zikula_Auth;
 use OC\ServerNotAvailableException;
 
 class ZikulaConnect {
-	private static function buildUrl($func) {
-		if(substr(\OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null), -1) != '/') {
-			\OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! Please note: you need an ending /!',3);
-			return;
-		}
+	/**
+	 * provides the settings of the module
+	 */
+	private $settings;
 
-		$url = \OC_Appconfig::getValue( 'zikula_auth', 'zikula_server', null) . 'index.php?module=Owncloud&type=Owncloud&func=' . $func;
+	/**
+	 * @brief instantiate the new class
+	 * @param $settingsDriver settings class
+	 * @return void
+	 *
+	 * Initialise the new class.
+	 */
+	public function __construct($settingsDriver) {
+		$this->settings = $settingsDriver;
+	}
+
+	private function buildUrl($func) {
+		$url = $this->settings->getZikulaUrl() . 'index.php?module=Owncloud&type=Owncloud&func=' . $func;
 		return $url;
 	}
 
-	public static function fetch ($func, $postparams = array()) {
+	public function fetch ($func, $postparams = array()) {
 		$url = self::buildUrl($func);
-		$postparams['token'] = \OC_Appconfig::getValue( 'zikula_auth', 'zikula_server_token', '');
-		if($postparams['token'] == '') {
-			\OC_Log::write('OC_User_Zikula', 'Invalid configuration of module! You have to enter a server token!',3);
-			return null;
-		}
+		$postparams['token'] = $this->settings->getSecret();
 
 		//define chache file name
 		$pathname = sys_get_temp_dir() . '/Zikula_Owncloud/' . hash('sha256', $url . serialize($postparams));

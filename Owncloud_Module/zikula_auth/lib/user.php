@@ -37,6 +37,28 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	);
 
 	/**
+	 * provides the settings of the module
+	 */
+	private $settings;
+
+	/**
+	 * provides zikula connect
+	 */
+	private $zikulaConnect;
+
+	/**
+	 * @brief instantiate the new class
+	 * @param $settingsDriver settings class
+	 * @return void
+	 *
+	 * Initialise the new class.
+	 */
+	public function __construct($settingsDriver) {
+		$this->settings = $settingsDriver;
+		$this->zikulaConnect = new ZikulaConnect($settingsDriver);
+	}
+
+	/**
 	* @brief Create a new user
 	* @param $uid The username of the user to create
 	* @param $password The password of the new user
@@ -89,7 +111,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 			$postparams['viaauthcode'] = true;
 		}
 
-		if(ZikulaConnect::fetch('checkUserPassword', $postparams)) {
+		if($this->zikulaConnect->fetch('checkUserPassword', $postparams)) {
 			return $uid;
 		} else {
 			return false;
@@ -118,7 +140,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 		if(!is_numeric($offset)) {
 			$offset = -1;
 		}
-		return ZikulaConnect::fetch('getUsers', array('search' => $search, 'offset' => $offset, 'limit' => $limit));
+		return $this->zikulaConnect->fetch('getUsers', array('search' => $search, 'offset' => $offset, 'limit' => $limit));
 	}
 
 	/**
@@ -131,7 +153,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 		if($uid == '') {
 			return false;
 		}
-		return ZikulaConnect::fetch('userExists', array('user' => $uid));
+		return $this->zikulaConnect->fetch('userExists', array('user' => $uid));
 	}
 
 	/**
