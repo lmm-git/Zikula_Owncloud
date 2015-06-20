@@ -62,7 +62,7 @@ class Settings {
 				}
 
 				if(parse_url($this->zikulaUrl, PHP_URL_SCHEME) != 'https') {
-					\OC_Log::write('zikula_auth', 'Using other transport mechanisms than https is a big security risk! Please change to https!', \OCP\Util::DEBUG);
+					\OC_Log::write('zikula_auth', 'Using other transport mechanisms than https is a big security risk! Please change to https!', \OCP\Util::WARN);
 				}
 			}
 		}
