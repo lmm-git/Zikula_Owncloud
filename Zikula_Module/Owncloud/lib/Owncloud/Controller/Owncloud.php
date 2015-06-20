@@ -380,7 +380,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 	{
 		self::authenticate();
 
-		$group = FormUtil::getPassedValue('group', null);
+		$group = FormUtil::getPassedValue('group', null, 'GETPOST');
 
 		if($group == null) {
 			return self::retError('ERROR: No group passed!');
@@ -396,7 +396,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 				}
 			}
 		} else {
-			$return = false;
+			$return = array();
 		}
 
 		return self::ret($return);

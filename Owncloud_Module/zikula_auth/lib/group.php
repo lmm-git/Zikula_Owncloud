@@ -154,6 +154,6 @@ class Group extends \OC_Group_Backend {
 	* @return array with user ids
 	*/
 	public function usersInGroup($gid, $search = '', $limit = -1, $offset = 0) {
-		return $this->zikulaConnect->fetch('getUsersInGroup', array('user' => $gid, 'search' => $search, 'limit' => $limit, 'offset' => $offset));
+		return $this->zikulaConnect->fetch('getUsersInGroup', array('group' => $gid, 'search' => $search, 'limit' => $limit, 'offset' => $offset));
 	}
 }
