@@ -20,6 +20,8 @@
 namespace OCA\Zikula_Auth\Jobs;
 
 use \OC\BackgroundJob\TimedJob;
+use OCA\Zikula_Auth\ZikulaConnect;
+use OCA\Zikula_Auth\Settings;
 
 require_once 'zikula_auth/lib/zikulaconnect.php';
 
@@ -30,10 +32,29 @@ require_once 'zikula_auth/lib/zikulaconnect.php';
  */
 class CleanUp extends TimedJob {
 	/** @var int $defaultIntervalMin default interval in minutes */
-	protected $defaultIntervalMin = 1;
+	protected $defaultIntervalMin = 31;
 
+	/**
+	 * provides the settings of the module
+	 */
+	private $settings;
+
+	/**
+	 * provides zikula connect
+	 */
+	private $zikulaConnect;
+
+	/**
+	 * @brief instantiate the new class
+	 * @param $settingsDriver settings class
+	 * @return void
+	 *
+	 * Initialise the new class.
+	 */
 	public function __construct() {
+		$this->settings = new Settings();
 		$this->setInterval(intval($this->defaultIntervalMin) * 60);
+		$this->zikulaConnect = new ZikulaConnect($this->settings);
 	}
 
 	/**
@@ -41,12 +62,7 @@ class CleanUp extends TimedJob {
 	 * @param array $argument
 	 */
 	public function run($argument) {
-		$fetch = \ZikulaConnect::fetch('getUsersToDelete');
-
-		foreach($fetch as $key => $item) {
-			\OC_Log::write('OC_User_Zikula', 'User ' . $key . ' = ' . $item, \OCP\Util::DEBUG);
-		}
-		\OC_Log::write('OC_User_Zikula', 'END', \OCP\Util::DEBUG);
+		$fetch = $this->zikulaConnect->fetch('getUsersToDelete');
 
 		if(!is_array($fetch)) {
 			return;
@@ -60,7 +76,7 @@ class CleanUp extends TimedJob {
 			//\OC_User::deleteUser($user);
 
 			if($successful) {
-				\ZikulaConnect::fetch('userDeleted', array('user' => $user));
+				$this->zikulaConnect->fetch('userDeleted', array('user' => $user));
 			}
 		}
 
