@@ -45,7 +45,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 	 * @author Leonard Marschke
 	 * @return return()
 	 */
-	private function retError($string) {
+	private function retError($error) {
 		return self::ret($error, 'error');
 	}
 
