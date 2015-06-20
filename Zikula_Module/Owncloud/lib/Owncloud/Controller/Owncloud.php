@@ -60,7 +60,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		if($where == null) {
 			$where = 'activated = 1';
 		} else {
-			$where = '( ' . mysql_escape_string($where) . ' ) AND activated = 1';
+			$where = '( ' . $where . ' ) AND activated = 1';
 		}
 		$users = UserUtil::getUsers($where, 'uname', FormUtil::getPassedValue('offset', -1), FormUtil::getPassedValue('limit', -1));
 		//check for right permissions
@@ -100,7 +100,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		self::authenticate();
 		$search = FormUtil::getPassedValue('search', null, 'GETPOST');
 		if($search != '') {
-			$where = 'uname LIKE \'' . $search . '%\'';
+			$where = 'uname LIKE \'' . mysql_escape_string($search) . '%\'';
 		} else {
 			$where = null;
 		}
@@ -132,7 +132,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 			return self::retError('ERROR: No user name passed!');
 		}
 
-		$users = self::getRawUsers('uname = \'' . $uname . '\'');
+		$users = self::getRawUsers('uname = \'' . mysql_escape_string($uname) . '\'');
 
 		if(count($users) == 1) {
 			foreach($users as $user) {
@@ -167,7 +167,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 			return self::retError('ERROR: No up passed!');
 		}
 
-		$users = self::getRawUsers('uname = \'' . $uname . '\'');
+		$users = self::getRawUsers('uname = \'' . mysql_escape_string($uname) . '\'');
 
 		if(count($users) == 1) {
 			foreach($users as $user) {
