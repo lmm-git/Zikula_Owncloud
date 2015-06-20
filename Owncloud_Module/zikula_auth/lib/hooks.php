@@ -25,31 +25,16 @@ namespace OCA\Zikula_Auth;
  */
 class Hooks {
     /**
-     * provides the settings of the module
-     */
-    private $settings;
-
-    /**
-     * @brief instantiate the new class
-     * @param $settingsDriver settings class
-     * @return void
-     *
-     * Initialise the new class.
-     */
-    public function __construct($settingsDriver) {
-        $this->settings = $settingsDriver;
-    }
-
-    /**
      * @brief Logging out user at Zikula
      * @param paramters parameters from logout-Hook
      * @return boolean
      */
     public static function logout($parameters) {
+        $settings = new Settings();
         if($_GET['backtoZikulaWebsite'] === true) {
-            header('Location: ' . $this->settings->getZikulaPublicUrl());
+            header('Location: ' . $settings->getZikulaPublicUrl());
         } else {
-            header('Location: ' . $this->settings->getZikulaPublicUrl() . 'index.php?module=owncloud&type=user&func=logout');
+            header('Location: ' . $settings->getZikulaPublicUrl() . 'index.php?module=owncloud&type=user&func=logout');
         }
 
         session_unset();
