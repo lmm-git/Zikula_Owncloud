@@ -89,9 +89,7 @@ class ZikulaConnect {
 				if($func != 'checkUserPassword'	) {
 					throw new ServerNotAvailableException('Connection to Zikula could not be established');
 				} else {
-					header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
-					die('Connection to Zikula could not be established');
-					return false;
+					throw new \OC\User\LoginException('Connection to Zikula could not be established. Please try again later or contact your system administrator.');
 				}
 				return;
 			}
