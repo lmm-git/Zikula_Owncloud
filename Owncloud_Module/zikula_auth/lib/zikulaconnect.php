@@ -86,7 +86,13 @@ class ZikulaConnect {
 						'. No error message provided by Zikula.', \OCP\Util::ERROR);
 				}
 
-				throw new ServerNotAvailableException('Connection to Zikula could not be established');
+				if($func != 'checkUserPassword'	) {
+					throw new ServerNotAvailableException('Connection to Zikula could not be established');
+				} else {
+					header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+					die('Connection to Zikula could not be established');
+					return false;
+				}
 				return;
 			}
 			//store output in cache only if it is not an auth request
