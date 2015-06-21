@@ -73,11 +73,11 @@ class Settings {
 	}
 
 	/**
-	* @brief Checks if parsed settings are valid
-	* @return true if valid, false if not
-	*
-	* Checks the parsed settings by the constructor for validity
-	*/
+	 * @brief Checks if parsed settings are valid
+	 * @return true if valid, false if not
+	 *
+	 * Checks the parsed settings by the constructor for validity
+	 */
 	public function isValid() {
 		if($this->zikulaUrl === null) {
 			return false;
@@ -92,31 +92,31 @@ class Settings {
 	}
 
 	/**
-	* @brief getter for zikulaUrl
-	* @return string zikulaUrl
-	*
-	* returns the Zikula URL to request
-	*/
+	 * @brief getter for zikulaUrl
+	 * @return string zikulaUrl
+	 *
+	 * returns the Zikula URL to request
+	 */
 	public function getZikulaUrl() {
 		return $this->zikulaUrl;
 	}
 
 	/**
-	* @brief getter for zikulaPublicUrl
-	* @return string zikulaPublicUrl
-	*
-	* returns the Zikula URL to redirect
-	*/
+	 * @brief getter for zikulaPublicUrl
+	 * @return string zikulaPublicUrl
+	 *
+	 * returns the Zikula URL to redirect
+	 */
 	public function getZikulaPublicUrl() {
 		return $this->zikulaPublicUrl;
 	}
 
 	/**
-	* @brief getter for secret
-	* @return string secret
-	*
-	* returns the secret to sign requests
-	*/
+	 * @brief getter for secret
+	 * @return string secret
+	 *
+	 * returns the secret to sign requests
+	 */
 	public function getSecret() {
 		return $this->secret;
 	}

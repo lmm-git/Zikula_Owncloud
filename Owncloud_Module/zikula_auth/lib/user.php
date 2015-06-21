@@ -23,12 +23,12 @@ namespace OCA\Zikula_Auth;
 require_once 'zikula_auth/lib/zikulaconnect.php';
 
 /**
-* @brief Class providing zikula users to ownCloud
-*/
+ * @brief Class providing zikula users to ownCloud
+ */
 class User extends \OC_User_Backend implements \OCP\UserInterface {
 	/**
-	* provides the possible actions of this user backend
-	*/
+	 * provides the possible actions of this user backend
+	 */
 	protected $possibleActions = array(
 		self::CHECK_PASSWORD => 'checkPassword',
 		self::GET_HOME => 'getHome',
@@ -59,52 +59,52 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	}
 
 	/**
-	* @brief Create a new user
-	* @param $uid The username of the user to create
-	* @param $password The password of the new user
-	* @return true/false
-	*
-	* Creates a new user. Basic checking of username is done in OC_User
-	* itself, not in its subclasses.
-	*/
+	 * @brief Create a new user
+	 * @param $uid The username of the user to create
+	 * @param $password The password of the new user
+	 * @return true/false
+	 *
+	 * Creates a new user. Basic checking of username is done in OC_User
+	 * itself, not in its subclasses.
+	 */
 	public function createUser($uid, $password) {
 		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to create users',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
 	/**
-	* @brief delete a user
-	* @param $uid The username of the user to delete
-	* @return true/false
-	*
-	* Deletes a user
-	*/
+	 * @brief delete a user
+	 * @param $uid The username of the user to delete
+	 * @return true/false
+	 *
+	 * Deletes a user
+	 */
 	public function deleteUser($uid) {
 		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to delete users',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
 	/**
-	* @brief Set password
-	* @param $uid The username
-	* @param $password The new password
-	* @return true/false
-	*
-	* Change the password of a user
-	*/
+	 * @brief Set password
+	 * @param $uid The username
+	 * @param $password The new password
+	 * @return true/false
+	 *
+	 * Change the password of a user
+	 */
 	public function setPassword($uid, $password) {
 		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to change passwords',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
 	/**
-	* @brief Check if the password is correct
-	* @param $uid The username
-	* @param $password The password
-	* @return true/false
-	*
-	* Check if the password is correct without logging in the user
-	*/
+	 * @brief Check if the password is correct
+	 * @param $uid The username
+	 * @param $password The password
+	 * @return true/false
+	 *
+	 * Check if the password is correct without logging in the user
+	 */
 	public function checkPassword($uid, $password) {
 		$postparams = array('user' => $uid, 'up' => $password);
 		if($_POST['user'] != '' && isset($_GET['zikula_authcode']) && $_GET['zikula_authcode'] != '') {
@@ -128,11 +128,11 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	}
 
 	/**
-	* @brief Get a list of all users
-	* @return array with all active usernames
-	*
-	* Get a list of all users.
-	*/
+	 * @brief Get a list of all users
+	 * @return array with all active usernames
+	 *
+	 * Get a list of all users.
+	 */
 	public function getUsers($search = '', $limit = -1, $offset = 0) {
 		if(!is_numeric($limit)) {
 			$limit = -1;
@@ -144,10 +144,10 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	}
 
 	/**
-	* @brief check if a user exists
-	* @param string $uid the username
-	* @return boolean
-	*/
+	 * @brief check if a user exists
+	 * @param string $uid the username
+	 * @return boolean
+	 */
 	public function userExists($uid) {
 		//sometimes we get an empty uid?!?
 		if($uid == '') {
@@ -157,9 +157,9 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	}
 
 	/**
-	* @brief get count of users
-	* @return integer
-	*/
+	 * @brief get count of users
+	 * @return integer
+	 */
 	public function countUsers() {
 		return count(self::getUsers());
 	}
