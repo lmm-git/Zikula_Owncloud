@@ -1,4 +1,10 @@
-<h3>{gt text='Redirecting you to Owncloud... Please wait.'}</h3>
+{pageaddvar name='javascript' value='jquery'}
+{pageaddvar name='javascript' value='jquery-ui'}
+{pageaddvar name='javascript' value='modules/Owncloud/javascript/User/RedirectPulsate.js'}
+<h3>{gt text='Redirecting you to ownCloud. Please wait...'}</h3>
+<div id="Owncloud_redirectLogo" class="z-center">
+	{img modname='Owncloud' src='logo-big.png' style='max-width: 100%;' height='auto'}
+</div>
 
 <div style="display: none">
 
