@@ -6,22 +6,22 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Zikula 1.x\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-01 15:03+0100\n"
+"POT-Creation-Date: 2015-06-24 14:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: lib/Owncloud/Form/Handler/Admin/Settings.php:45
 msgid "Configuring of module settings cancelled!"
 msgstr ""
 
-#: lib/Owncloud/Form/Handler/Admin/Settings.php:60
+#: lib/Owncloud/Form/Handler/Admin/Settings.php:64
 msgid "Module settings edited!"
 msgstr ""
 
@@ -40,6 +40,14 @@ msgstr ""
 msgid "owncloud"
 msgstr ""
 
+#: lib/Owncloud/Controller/User.php:63
+msgid "Logout from OwnCloud sucessful!"
+msgstr ""
+
+#: lib/Owncloud/Api/Account.php:26
+msgid "Go to ownCloud"
+msgstr ""
+
 #: lib/Owncloud/Api/Admin.php:14 templates/Admin/Settings.tpl:1
 msgid "Settings"
 msgstr ""
@@ -53,13 +61,21 @@ msgid "IP-Address of owncloud instance"
 msgstr ""
 
 #: templates/Admin/Settings.tpl:15
+msgid "URL of owncloud instance"
+msgstr ""
+
+#: templates/Admin/Settings.tpl:20
 msgid "Auth token"
 msgstr ""
 
-#: templates/Admin/Settings.tpl:23
+#: templates/Admin/Settings.tpl:27
 msgid "Store settings"
 msgstr ""
 
-#: templates/Admin/Settings.tpl:24
+#: templates/Admin/Settings.tpl:28
 msgid "Cancel"
+msgstr ""
+
+#: templates/User/Redirect.tpl:4
+msgid "Redirecting you to ownCloud. Please wait..."
 msgstr ""
