@@ -8,7 +8,8 @@ Installing
 ----------
 
 _I have tested both modules with Zikula 1.3.9 and OwnCloud 8.0.4._
-Please note the issue described [here](https://github.com/owncloud/calendar/pull/814). Because of this issue the module won't delete users calendars (rest of the modules work fine).
+
+Please note the issue described [here](https://github.com/owncloud/calendar/pull/814). Because of this issue the module won't delete users calendars (rest of the modules work fine). The issue is fixed in the newest version of the owncloud calendar.
 
 This package needs php-curl!
 
