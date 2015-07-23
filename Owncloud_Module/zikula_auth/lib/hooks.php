@@ -39,7 +39,7 @@ class Hooks {
 
         session_unset();
         session_destroy();
-        OC_User::unsetMagicInCookie();
+        \OC_User::unsetMagicInCookie();
         exit();
     }
 }
