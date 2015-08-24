@@ -7,24 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zikula 1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-01 15:03+0100\n"
-"PO-Revision-Date: 2014-01-26 13:33+0100\n"
-"Last-Translator: Leonard Marschke <leonardmarschke@googlemail.com>\n"
+"POT-Creation-Date: 2015-08-24 11:21+0200\n"
+"PO-Revision-Date: 2015-08-24 11:23+0100\n"
+"Last-Translator: Leonard Marschke <leonard@marschke.me>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-Language: GERMAN\n"
-"X-Poedit-Country: GERMANY\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: lib/Owncloud/Form/Handler/Admin/Settings.php:45
 msgid "Configuring of module settings cancelled!"
 msgstr "Konfigurieren der Moduleinstellungen abgeschlossen!"
 
-#: lib/Owncloud/Form/Handler/Admin/Settings.php:60
+#: lib/Owncloud/Form/Handler/Admin/Settings.php:64
 msgid "Module settings edited!"
 msgstr "Moduleinstellungen bearbeitet!"
 
@@ -33,16 +32,27 @@ msgid "Owncloud"
 msgstr "Owncloud"
 
 #: lib/Owncloud/Version.php:16
-msgid "Owncloud connection module for Zikula. For using this module you have to install the zikula_auth module at your owncloud instance."
-msgstr "OwnCloud Anschlussmodul für Zikula. Für dieses Modul müssen Sie die zikula_auth-Modul bei Ihrer OwnCloud-Instanz installieren."
+msgid ""
+"Owncloud connection module for Zikula. For using this module you have to "
+"install the zikula_auth module at your owncloud instance."
+msgstr ""
+"OwnCloud Anschlussmodul für Zikula. Für dieses Modul müssen Sie die "
+"zikula_auth-Modul bei Ihrer OwnCloud-Instanz installieren."
 
 #. ! module name that appears in URL
 #: lib/Owncloud/Version.php:18
 msgid "owncloud"
 msgstr "OwnCloud"
 
-#: lib/Owncloud/Api/Admin.php:14
-#: templates/Admin/Settings.tpl:1
+#: lib/Owncloud/Controller/User.php:69
+msgid "Logout from OwnCloud sucessful!"
+msgstr "Logout aus der ownCloud war erfolgreich!"
+
+#: lib/Owncloud/Api/Account.php:26
+msgid "Go to ownCloud"
+msgstr "Zur ownCloud"
+
+#: lib/Owncloud/Api/Admin.php:14 templates/Admin/Settings.tpl:1
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -55,14 +65,21 @@ msgid "IP-Address of owncloud instance"
 msgstr "IP- Adresse der OwnCloud-Instanz"
 
 #: templates/Admin/Settings.tpl:15
+msgid "URL of owncloud instance"
+msgstr "URL der OwnCloud-Instanz"
+
+#: templates/Admin/Settings.tpl:20
 msgid "Auth token"
 msgstr "Authentifizierungskennwort"
 
-#: templates/Admin/Settings.tpl:23
+#: templates/Admin/Settings.tpl:27
 msgid "Store settings"
 msgstr "Speichereinstellungen"
 
-#: templates/Admin/Settings.tpl:24
+#: templates/Admin/Settings.tpl:28
 msgid "Cancel"
 msgstr "Abbrechen"
 
+#: templates/User/Redirect.tpl:4
+msgid "Redirecting you to ownCloud. Please wait..."
+msgstr "Sie werden zur ownCloud weitergeleitet. Bitte warten Sie..."
