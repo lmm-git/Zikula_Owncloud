@@ -14,7 +14,7 @@
 			<input type="text" name="password" id="password" value="{$authcode.authcode}" autocomplete="off" />
 
 			<input type="checkbox" name="remember_login" value="0" id="remember_login"/>
-			<input type="hidden" name="requesttoken" value="dummy" />
+			<input type="hidden" name="requesttoken" value="{$requestToken}" />
 			<input type="hidden" name="timezone-offset" id="timezone-offset" />
 			<input type="submit" id="submitbutton" value="Login" />
 		</fieldset>

@@ -26,6 +26,11 @@ class Owncloud_Controller_User extends Zikula_AbstractController
 			return LogUtil::registerPermissionError();
 		}
 
+		$requestToken = FormUtil::getPassedValue('token', null, 'GET');
+		if($requestToken == null) {
+			return System::redirect($this->getVar('OwncloudURL') . 'index.php/apps/zikula_auth/getToken');
+		}
+
 		//generate a auth-var
 		$chars .= '0123456789';
 		$chars .= 'abcdefghijklmnopqrstuvwxyz';
@@ -47,6 +52,7 @@ class Owncloud_Controller_User extends Zikula_AbstractController
 		$this->view->assign('url', $url);
 		$this->view->assign('uname', UserUtil::getVar('uname'));
 		$this->view->assign('authcode', $authcode);
+		$this->view->assign('requestToken', $requestToken);
 
 		return $this->view->fetch('User/Redirect.tpl');
 	}
