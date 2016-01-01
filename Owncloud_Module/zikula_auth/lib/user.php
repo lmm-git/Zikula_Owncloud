@@ -68,7 +68,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	 * itself, not in its subclasses.
 	 */
 	public function createUser($uid, $password) {
-		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to create users',3);
+		\OCP\Util::writeLog('OC_User_Zikula', 'Use the zikula webinterface to create users',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -80,7 +80,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	 * Deletes a user
 	 */
 	public function deleteUser($uid) {
-		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to delete users',3);
+		\OCP\Util::writeLog('OC_User_Zikula', 'Use the zikula webinterface to delete users',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -93,7 +93,7 @@ class User extends \OC_User_Backend implements \OCP\UserInterface {
 	 * Change the password of a user
 	 */
 	public function setPassword($uid, $password) {
-		\OC_Log::write('OC_User_Zikula', 'Use the zikula webinterface to change passwords',3);
+		\OCP\Util::writeLog('OC_User_Zikula', 'Use the zikula webinterface to change passwords',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 

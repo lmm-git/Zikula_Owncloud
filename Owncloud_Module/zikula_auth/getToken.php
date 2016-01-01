@@ -19,7 +19,7 @@
  */
 
 // Check if we are a user
-OCP\App::checkAppEnabled('zikula_auth');
+\OCP\App::checkAppEnabled('zikula_auth');
 
 $settings = new OCA\Zikula_Auth\Settings();
 header('Location: ' . $settings->getZikulaPublicUrl() . 'index.php?module=owncloud&type=user&func=redirect&token=' . urlencode(OC_Util::callRegister()));

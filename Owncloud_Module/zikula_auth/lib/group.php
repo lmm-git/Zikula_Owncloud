@@ -57,7 +57,7 @@ class Group extends \OC_Group_Backend {
 	 * be returned.
 	 */
 	public static function createGroup($gid) {
-		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to create groups',3);
+		\OCP\Util::writeLog('OC_Group_Zikula', 'Use the zikula webinterface to create groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -69,7 +69,7 @@ class Group extends \OC_Group_Backend {
 	 * Deletes a group and removes it from the group_user-table
 	 */
 	public function deleteGroup($gid) {
-		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to delete groups',3);
+		\OCP\Util::writeLog('OC_Group_Zikula', 'Use the zikula webinterface to delete groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -105,7 +105,7 @@ class Group extends \OC_Group_Backend {
 	 * Adds a user to a group.
 	 */
 	public function addToGroup($uid, $gid) {
-		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to add users to groups',3);
+		\OCP\Util::writeLog('OC_Group_Zikula', 'Use the zikula webinterface to add users to groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 
@@ -118,7 +118,7 @@ class Group extends \OC_Group_Backend {
 	 * removes the user from a group.
 	 */
 	public function removeFromGroup( $uid, $gid ) {
-		\OC_Log::write('OC_Group_Zikula', 'Use the zikula webinterface to remove users from groups',3);
+		\OCP\Util::writeLog('OC_Group_Zikula', 'Use the zikula webinterface to remove users from groups',3);
 		return OC_USER_BACKEND_NOT_IMPLEMENTED;
 	}
 

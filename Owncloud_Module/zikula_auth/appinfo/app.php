@@ -27,15 +27,15 @@ require_once 'zikula_auth/lib/group.php';
 require_once 'zikula_auth/lib/hooks.php';
 require_once 'zikula_auth/lib/settings.php';
 
-$settings = new OCA\Zikula_Auth\Settings();
+$settings = new \OCA\Zikula_Auth\Settings();
 
 if($settings->isValid()) {
-	OCP\Util::connectHook('OC_User', 'logout', new OCA\Zikula_Auth\Hooks($settings), 'logout');
+	\OCP\Util::connectHook('OC_User', 'logout', new OCA\Zikula_Auth\Hooks($settings), 'logout');
 
-	OC_User::useBackend(new OCA\Zikula_Auth\User($settings));
-	OC_Group::useBackend(new OCA\Zikula_Auth\Group($settings));
+	\OC_User::useBackend(new OCA\Zikula_Auth\User($settings));
+	\OC_Group::useBackend(new OCA\Zikula_Auth\Group($settings));
 
-	OCP\App::addNavigationEntry(
+	\OCP\App::addNavigationEntry(
 		array( 'id' => 'zikula_auth_backtowebsite',
 			'order' => 70,
 			'href' => OCP\Util::linkToRoute('ZikulaAuth_backToWebsite'),
@@ -43,7 +43,7 @@ if($settings->isValid()) {
 			'name' => 'Back to website'
 	));
 
-	OCP\Backgroundjob::registerJob('\OCA\Zikula_Auth\Jobs\CleanUp');
+	\OCP\Backgroundjob::registerJob('\OCA\Zikula_Auth\Jobs\CleanUp');
 } else {
-	\OC_Log::write('zikula_auth', 'zikula_auth is not configrued correctly. Read the docs how to configure zikula_auth correctly!', \OCP\Util::ERROR);
+	\OCP\Util::writeLog('zikula_auth', 'zikula_auth is not configured correctly. Read the docs how to configure zikula_auth correctly!', \OCP\Util::ERROR);
 }

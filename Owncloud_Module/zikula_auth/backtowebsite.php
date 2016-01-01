@@ -19,10 +19,10 @@
  */
 
 // Check if we are a user
-OCP\User::checkLoggedIn();
-OCP\App::checkAppEnabled('zikula_auth');
+\OCP\User::checkLoggedIn();
+\OCP\App::checkAppEnabled('zikula_auth');
 
-OCP\App::setActiveNavigationEntry('zikula_auth_backtowebsite');
+\OCP\App::setActiveNavigationEntry('zikula_auth_backtowebsite');
 
 $_GET['backtoZikulaWebsite'] = true;
 OC_User::logout();

@@ -20,8 +20,8 @@
 namespace OCA\Zikula_Auth\Jobs;
 
 use \OC\BackgroundJob\TimedJob;
-use OCA\Zikula_Auth\ZikulaConnect;
-use OCA\Zikula_Auth\Settings;
+use \OCA\Zikula_Auth\ZikulaConnect;
+use \OCA\Zikula_Auth\Settings;
 
 require_once 'zikula_auth/lib/zikulaconnect.php';
 
@@ -69,13 +69,13 @@ class CleanUp extends TimedJob {
 		}
 
 		foreach($fetch as $user) {
-			\OC_Log::write('OC_User_Zikula', 'Deleted user ' . $key . ' = ' . $item, \OCP\Util::DEBUG);
+			\OCP\Util::writeLog('OC_User_Zikula', 'Deleted user ' . $key . ' = ' . $item, \OCP\Util::DEBUG);
 
 			//what is better?
-			$successful = \OC::$server->getUserManager()->get($user)->delete();
+			$successfull = \OC::$server->getUserManager()->get($user)->delete();
 			//\OC_User::deleteUser($user);
 
-			if($successful) {
+			if($successfull) {
 				$this->zikulaConnect->fetch('userDeleted', array('user' => $user));
 			}
 		}

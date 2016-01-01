@@ -20,7 +20,7 @@
 
 namespace OCA\Zikula_Auth;
 
-use OC\ServerNotAvailableException;
+use \OC\ServerNotAvailableException;
 
 class ZikulaConnect {
 	/**
@@ -86,10 +86,10 @@ class ZikulaConnect {
 			$return = json_decode($output, true);
 			if($return === null || $output === false || !isset($return['status']) || $return['status'] != 'success') {
 				if(isset($return['status']) && $return['status'] == 'error' && is_string($return['data'])) {
-					\OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
+					\OCP\Util::writeLog('OC_User_Zikula', 'Invalid server response at function ' . $func .
 						'. Error message: ' . $return['data'], \OCP\Util::ERROR);
 				} else {
-					\OC_Log::write('OC_User_Zikula', 'Invalid server response at function ' . $func .
+					\OCP\Util::writeLog('OC_User_Zikula', 'Invalid server response at function ' . $func .
 						'. No error message provided by Zikula.', \OCP\Util::ERROR);
 				}
 
