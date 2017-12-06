@@ -227,7 +227,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		}
 
 		if($search != '') {
-			$where = 'name LIKE \'' . $search . '%\'';
+			$where = 'name LIKE \'' . mysql_escape_string($search) . '%\'';
 		} else {
 			$where = '';
 		}
@@ -267,7 +267,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 			$return = true;
 		} else {
 			if($search != '') {
-				$where = 'name = \'' . $search . '\'';
+				$where = 'name = \'' . mysql_escape_string($search) . '\'';
 			} else {
 				$where = '';
 			}
@@ -386,7 +386,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 			return self::retError('ERROR: No group passed!');
 		}
 
-		$group = UserUtil::getGroups('name = \'' . $group . '\'');
+		$group = UserUtil::getGroups('name = \'' . mysql_escape_string($group) . '\'');
 		$return = array();
 		if(count($group) == 1) {
 			foreach($group as $item) {
