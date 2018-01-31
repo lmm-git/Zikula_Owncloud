@@ -15,7 +15,7 @@ class Owncloud_Controller_Owncloud extends Zikula_AbstractController
 		$token = FormUtil::getPassedValue('token', null, 'GETPOST');
 		$addr = $_SERVER['REMOTE_ADDR'];
 
-		if($token == $this->getVar('Authtoken') && $this->getVar('Authtoken') != null && $addr == $this->getVar('AllowedHost')) {
+		if($token == $this->getVar('Authtoken') && $this->getVar('Authtoken') != null && ($addr == $this->getVar('AllowedHost') || $this->getVar('AllowedHost') == '*')) {
 			return true;
 		} else {
 			echo 'You are a hacker, right?';
